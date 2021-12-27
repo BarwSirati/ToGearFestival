@@ -1,13 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  font-family: "Prompt", sans-serif !important;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-sky-100;
+  /* background: url("../public/image/bg.png");
+  background-size: cover; */
+}
+.font-weight {
+  font-weight: bold;
+}
+.input-form {
+  @apply p-4 w-full bg-gray-200 rounded-xl border transition-colors focus:bg-white focus:outline-none focus:shadow-xl;
+}
+.max-h-100 {
+  max-height: 400px;
+}
+.my-25 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.paperplane {
+  position: relative;
+  overflow: hidden;
+  background-color: #50befa;
+  border-radius: 50%;
+}
+.loginButton {
+  @apply font-weight w-full rounded shadow-xl hover:scale-105 hover:text-white;
+  text-transform: none !important;
+}
+.plane {
+  position: absolute;
+  animation: move 3s linear infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes move {
+  0% {
+    transform: translateY(0) rotateX(0);
+  }
+  25% {
+    transform: translateY(-30px) rotateX(40deg);
+  }
+  50% {
+    transform: rotateX(0) translateY(0);
+  }
+  75% {
+    transform: rotateX(-40deg) translateY(30px);
+  }
+  100% {
+    transform: rotateX(0) translateY(0);
+  }
+}
+
+.wingRight {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 22.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-bottom: 115px solid white;
+  transform: rotate(61deg);
+  z-index: 4;
+}
+
+.bottom {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 12.5px solid transparent;
+  border-right: 12.5px solid transparent;
+  border-bottom: 25.5px solid #676d70;
+  top: 71px;
+  transform: rotate(-5deg);
+  left: -52.5px;
+  z-index: 3;
+}
+
+.top {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 30px solid #c1c7c9;
+  top: 65px;
+  transform: rotate(5deg);
+  left: -60px;
+  z-index: 1;
+}
+
+.middle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 135px solid #c1c7c9;
+  top: -13.5px;
+  transform: rotate(72deg);
+  left: -7.5px;
+  z-index: 2;
+}
+
+.wingLeft {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-bottom: 135px solid white;
+  transform: rotate(78deg) skewY(-35deg);
+  left: -18.5px;
+  z-index: 3;
+  top: -30px;
+}
+
+.clouds {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}
+
+@keyframes cloud {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 400px;
+  }
+}
+
+.cloudOne,
+.cloudTwo,
+.cloudThree {
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  background-color: #fff;
+  border-radius: 100px 100px 0 0;
+}
+
+.cloudOne {
+  top: 0;
+  left: 0;
+  animation: cloud 3s linear infinite reverse;
+}
+
+.cloudTwo {
+  top: 50px;
+  left: 100px;
+  animation: cloud 2.5s linear infinite reverse;
+}
+
+.cloudThree {
+  top: 250px;
+  left: 50px;
+  animation: cloud 2.8s linear infinite reverse;
+}
+
+.cloudOne:before,
+.cloudTwo:before,
+.cloudThree:before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 12.5px;
+  background-color: #fff;
+  border-radius: 100px 100px 0 0;
+  left: -20px;
+  top: 12.5px;
+  box-shadow: 65px 0 #fff;
+}
+.animate-rotate {
+  animation: rotate 2s infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+.flip {
+  animation: rotateY 2s;
+}
+@keyframes rotateY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
