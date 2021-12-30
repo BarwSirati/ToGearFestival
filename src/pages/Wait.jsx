@@ -5,20 +5,35 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
 const Wait = ({ second }) => {
   const navigate = useNavigate();
-  const { currentUser } = useSelector((state) => state.user);
-  const { timeStatus } = useSelector((state) => state.user);
+  const { currentUser, timeStatus } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const getDay = () => {
-    return Math.floor(second / (60 * 60 * 24));
+    if (second) {
+      return Math.floor(second / (60 * 60 * 24));
+    } else {
+      return 0;
+    }
   };
   const getHour = () => {
-    return Math.floor((second % (60 * 60 * 24)) / (60 * 60));
+    if (second) {
+      return Math.floor((second % (60 * 60 * 24)) / (60 * 60));
+    } else {
+      return 0;
+    }
   };
   const getMinute = () => {
-    return Math.floor((second % (60 * 60)) / 60);
+    if (second) {
+      return Math.floor((second % (60 * 60)) / 60);
+    } else {
+      return 0;
+    }
   };
   const getSecond = () => {
-    return Math.floor(second % 60);
+    if (second) {
+      return Math.floor(second % 60);
+    } else {
+      return 0;
+    }
   };
   const logout = () => {
     if (currentUser) {
@@ -35,7 +50,7 @@ const Wait = ({ second }) => {
       <div
         className={`flex overflow-hidden flex-row  rounded-2xl  justify-center lg:max-w-3xl w-full bg-white  transition-all drop-shadow-2xl resize-animate`}
       >
-        {currentUser ? (
+        {currentUser && !timeStatus ? (
           <div className="md:p-10 p-5 w-full">
             <div className="paperplane mx-auto w-60 h-60 shadow-2xl">
               <div className="plane top-16 left-32">

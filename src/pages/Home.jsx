@@ -16,10 +16,12 @@ const Home = ({ email }) => {
     }
   };
   useEffect(() => {
-    if (timeStatus && currentUser) {
-      navigate("/message", { replace: true });
-    } else if (sendStatus && currentUser) {
-      navigate("/wait", { replace: true });
+    if (currentUser) {
+      if (timeStatus) {
+        navigate("/message", { replace: true });
+      } else if (sendStatus) {
+        navigate("/wait", { replace: true });
+      }
     }
   }, [sendStatus, navigate, timeStatus, currentUser]);
   return (

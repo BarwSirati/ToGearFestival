@@ -13,7 +13,7 @@ import { setSend } from "./redux/action";
 import { db } from "./utils/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import Wait from "./pages/Wait";
-const countDownDate = new Date("Dec 27, 2021 23:30:00").getTime();
+const countDownDate = new Date("Jan 16, 2022 00:00:00").getTime();
 const App = () => {
   const [email, setEmail] = useState(null);
   const [second, setSecond] = useState(
@@ -68,7 +68,7 @@ const App = () => {
           <Route path="/" element={<Home email={email} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/wait" element={<Wait second={second} />} />
-          <Route path="/message" element={<Message email={email}  />} />
+          <Route path="/message" element={<Message email={email} />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Layout>

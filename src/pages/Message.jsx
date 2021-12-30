@@ -11,7 +11,7 @@ const Message = ({ email }) => {
   const [content, setContent] = useState([]);
   const [open, IsOpen] = useState(false);
   const [count, setCount] = useState(0);
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, timeStatus } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const logout = () => {
     if (currentUser) {
@@ -42,7 +42,7 @@ const Message = ({ email }) => {
           open ? "flip" : ""
         }`}
       >
-        {currentUser ? (
+        {currentUser && timeStatus ? (
           <>
             <div className="md:p-10 p-5 w-full">
               {count % 2 === 0 ? (

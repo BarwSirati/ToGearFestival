@@ -12,6 +12,9 @@ import {
 } from "../redux/action";
 
 const Login = () => {
+  const { currentUser, sendStatus, timeStatus } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [type, setType] = useState(null);
@@ -29,15 +32,15 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const { currentUser } = useSelector((state) => state.user);
-  const { sendStatus } = useSelector((state) => state.user);
   useEffect(() => {
-    if (currentUser && sendStatus) {
+    if (currentUser && timeStatus) {
+      navigate("/message", { replace: true });
+    } else if (currentUser && sendStatus) {
       navigate("/wait", { replace: true });
     } else if (currentUser) {
       navigate("/", { replace: true });
     }
-  }, [navigate, currentUser, sendStatus]);
+  }, [navigate, currentUser, sendStatus, timeStatus]);
   const onSubmit = (data) => {
     if (type === "signUp") {
       dispatch(registerInitiate(data.email, data.password));
